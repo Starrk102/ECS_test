@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using Leopotam.Ecs;
 
 namespace ECSGuide.ECS
 {
     public class TargetPosition
     {
-        public Vector3 targetPosition;
+        public Transform[] targetPosition;
+        
     }
 }

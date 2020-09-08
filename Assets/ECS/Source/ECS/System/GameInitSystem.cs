@@ -15,6 +15,7 @@ namespace ECSGuide.ECS
             var animationCompanent = player.Set<AnimationCharacter>();
             player.Set<InputEvent>();
 
+
             var playerInitData = UniversalScriptableObject.CreatePlayerObj();
             var spawnedPlayerPrefab = GameObject.Instantiate(playerInitData.obj, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
 
@@ -22,7 +23,13 @@ namespace ECSGuide.ECS
             movableComponent.moveSpeed = UniversalScriptableObject.CreatePlayerObj().objSpeed;
             movableComponent.transform = spawnedPlayerPrefab.transform;
 
-            for(int i = 0; i < 3; i++)
+            CreateWaypoint(new Vector2(-40, 20));
+            CreateWaypoint(new Vector2(-20, 20));
+            CreateWaypoint(new Vector2(-20, 0));
+            CreateWaypoint(new Vector2(0, 0));
+            CreateWaypoint(new Vector2(20, -20));
+
+            for (int i = 0; i < 3; i++)
             {
                 CreateEnemy(new Vector2(-40.0f,5.0f * i), spawnedPlayerPrefab.transform);
             }
@@ -33,8 +40,8 @@ namespace ECSGuide.ECS
             var enemy = world.NewEntity();
             var enemyMovableComponent = enemy.Set<Movable>();
             var enemyAnimationComponent = enemy.Set<AnimationCharacter>();
-            var targetPosition = enemy.Set<TargetPosition>();
             var followComponent = enemy.Set<Follow>();
+            
 
             var enemyInitData = UniversalScriptableObject.CreateEnemyObj();
             var spawnedEnemyPrefab = GameObject.Instantiate(enemyInitData.obj, atPosition, Quaternion.identity);
@@ -44,6 +51,12 @@ namespace ECSGuide.ECS
             enemyMovableComponent.transform = target;
 
             followComponent.target = target;
+        }
+
+        void CreateWaypoint(Vector3 position)
+        {
+            var wayPointInitDate = UniversalScriptableObject.CreateWayPoint();
+            GameObject.Instantiate(wayPointInitDate.WayPoint, position, Quaternion.identity);
         }
     }
 }

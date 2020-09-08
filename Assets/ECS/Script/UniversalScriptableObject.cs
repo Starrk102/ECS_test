@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ECSGuide.ECS;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +16,22 @@ public class UniversalScriptableObject : ScriptableObject
     public GameObject obj;
     [SerializeField]
     public float objSpeed = 2f;
+    [SerializeField]
+    public GameObject WayPoint;
+
     //по такому же принципу добавить доп. свойства объекту
     public static UniversalScriptableObject CreatePlayerObj() => Resources.Load("ScriptableObject/PlayerScriptableObject") as UniversalScriptableObject;
-    
-    public static UniversalScriptableObject CreateEnemyObj() => Resources.Load("ScriptableObject/EnemyScriptableObject") as UniversalScriptableObject;
-    
+
+    public static UniversalScriptableObject CreateEnemyObj()
+    {
+        return Resources.Load("ScriptableObject/EnemyScriptableObject") as UniversalScriptableObject;
+    }
+
+    public static UniversalScriptableObject CreateWayPoint()
+    {
+        return Resources.Load("ScriptableObject/WayPoint") as UniversalScriptableObject;
+    }
+
     public string ObjName
     {
         get
