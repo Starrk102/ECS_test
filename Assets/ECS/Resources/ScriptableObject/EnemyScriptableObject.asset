@@ -16,4 +16,4 @@ MonoBehaviour:
   objDescription: Enemy
   objIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   obj: {fileID: 4502513220265314141, guid: da2bdff08067154488939cadd5b36fc3, type: 3}
-  objSpeed: 2
+  objSpeed: 1

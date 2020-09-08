@@ -5,7 +5,7 @@ namespace ECSGuide.ECS
 {
     public class PlayerMoveSystem : IEcsRunSystem
     {
-        EcsFilter<Movable, InputEvent> playerMoveFilter;
+        EcsFilter<Movable, InputEvent> playerMoveFilter = null;
 
         public void Run()
         {

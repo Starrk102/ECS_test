@@ -16,8 +16,10 @@ public class UniversalScriptableObject : ScriptableObject
     [SerializeField]
     public float objSpeed = 2f;
     //по такому же принципу добавить доп. свойства объекту
-    public static UniversalScriptableObject CreateObj() => Resources.Load("ScriptableObject/PlayerScriptableObject") as UniversalScriptableObject;
-
+    public static UniversalScriptableObject CreatePlayerObj() => Resources.Load("ScriptableObject/PlayerScriptableObject") as UniversalScriptableObject;
+    
+    public static UniversalScriptableObject CreateEnemyObj() => Resources.Load("ScriptableObject/EnemyScriptableObject") as UniversalScriptableObject;
+    
     public string ObjName
     {
         get
