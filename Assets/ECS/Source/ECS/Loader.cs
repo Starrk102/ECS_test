@@ -20,6 +20,7 @@ namespace ECSGuide.ECS
             system.Add(new PlayerInputSystem());
             system.Add(new PlayerMoveSystem());
             //system.Add(new AnimatadCharacterSystem());
+            system.Add(new TargetPositionSystem());
             system.Add(new FollowSystem());
 
             system.Init();

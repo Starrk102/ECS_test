@@ -7,7 +7,7 @@ namespace ECSGuide.ECS
 {
     public class FollowSystem : IEcsRunSystem
     {
-        EcsFilter<Follow, Movable, InputEvent> enemyFollowFilter = null;
+        EcsFilter<Follow, Movable, TargetPosition> enemyFollowFilter = null;
 
         public void Run()
         {
@@ -15,10 +15,13 @@ namespace ECSGuide.ECS
             {
                 var followComponent = enemyFollowFilter.Get1[i];
                 var movableComponent = enemyFollowFilter.Get2[i];
-
-                if(followComponent.target)
+                var targetPosition = enemyFollowFilter.Get3[i];
+                //var direction = movableComponent.transform.position.normalized;
+                //movableComponent.transform.position = Vector2.MoveTowards(direction, targetPosition.Target1.position, movableComponent.moveSpeed * Time.deltaTime);
+                
+                if(targetPosition.Target1)
                 {
-                    var direction = (followComponent.target.position - movableComponent.transform.position).normalized;
+                    var direction = (targetPosition.Target1.position - movableComponent.transform.position).normalized;
                     movableComponent.transform.position += direction * (Time.deltaTime * movableComponent.moveSpeed);
                     movableComponent.isMoving = direction.sqrMagnitude > 0;
                 }

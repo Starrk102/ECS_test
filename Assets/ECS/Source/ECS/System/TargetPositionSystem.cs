@@ -14,9 +14,9 @@ namespace ECSGuide.ECS
             foreach (var i in targetPositionFilter)
             {
                 var targetPositionComponent = targetPositionFilter.Get1[i];
-                for (int j = 0; j < 5; j++)
+                foreach(GameObject Obj in GameObject.FindGameObjectsWithTag("WayPoint"))
                 {
-                    targetPositionComponent.targetPosition[j] = GameObject.FindGameObjectWithTag("WayPoint").transform;
+                    targetPositionComponent.Target1 = Obj.transform;
                 }
             }
         }
